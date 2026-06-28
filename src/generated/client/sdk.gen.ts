@@ -21,7 +21,7 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 /**
  * Get Info
  *
- * Return backend version information.
+ * Return backend information.
  */
 export const version = <ThrowOnError extends boolean = false>(options?: Options<VersionData, ThrowOnError>) => {
     return (options?.client ?? client).get<VersionResponses, unknown, ThrowOnError>({
