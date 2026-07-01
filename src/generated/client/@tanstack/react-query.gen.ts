@@ -36,12 +36,10 @@ const createQueryKey = <TOptions extends Options>(id: string, options?: TOptions
     if (options?.query) {
         params.query = options.query;
     }
-    return [
-        params
-    ];
+    return [params];
 };
 
-export const versionQueryKey = (options?: Options<VersionData>) => createQueryKey("version", options);
+export const versionQueryKey = (options?: Options<VersionData>) => createQueryKey('version', options);
 
 /**
  * Get Info
@@ -61,7 +59,7 @@ export const versionOptions = (options?: Options<VersionData>) => queryOptions<V
     queryKey: versionQueryKey(options)
 });
 
-export const sessionQueryKey = (options?: Options<SessionData>) => createQueryKey("session", options);
+export const sessionQueryKey = (options?: Options<SessionData>) => createQueryKey('session', options);
 
 /**
  * Get Session
@@ -84,7 +82,7 @@ export const sessionOptions = (options?: Options<SessionData>) => queryOptions<S
     queryKey: sessionQueryKey(options)
 });
 
-export const listwalletsQueryKey = (options?: Options<ListwalletsData>) => createQueryKey("listwallets", options);
+export const listwalletsQueryKey = (options?: Options<ListwalletsData>) => createQueryKey('listwallets', options);
 
 /**
  * List Wallets
@@ -161,7 +159,7 @@ export const unlockwalletMutation = (options?: Partial<Options<UnlockwalletData>
     return mutationOptions;
 };
 
-export const lockwalletQueryKey = (options: Options<LockwalletData>) => createQueryKey("lockwallet", options);
+export const lockwalletQueryKey = (options: Options<LockwalletData>) => createQueryKey('lockwallet', options);
 
 /**
  * Wallet Lock
@@ -200,7 +198,7 @@ export const tokenMutation = (options?: Partial<Options<TokenData>>): UseMutatio
     return mutationOptions;
 };
 
-export const displaywalletQueryKey = (options: Options<DisplaywalletData>) => createQueryKey("displaywallet", options);
+export const displaywalletQueryKey = (options: Options<DisplaywalletData>) => createQueryKey('displaywallet', options);
 
 /**
  * Wallet Display
@@ -220,7 +218,7 @@ export const displaywalletOptions = (options: Options<DisplaywalletData>) => que
     queryKey: displaywalletQueryKey(options)
 });
 
-export const listutxosQueryKey = (options: Options<ListutxosData>) => createQueryKey("listutxos", options);
+export const listutxosQueryKey = (options: Options<ListutxosData>) => createQueryKey('listutxos', options);
 
 /**
  * List Utxos
@@ -240,7 +238,7 @@ export const listutxosOptions = (options: Options<ListutxosData>) => queryOption
     queryKey: listutxosQueryKey(options)
 });
 
-export const wallethistoryQueryKey = (options: Options<WallethistoryData>) => createQueryKey("wallethistory", options);
+export const wallethistoryQueryKey = (options: Options<WallethistoryData>) => createQueryKey('wallethistory', options);
 
 /**
  * Wallet History
@@ -264,7 +262,7 @@ export const wallethistoryOptions = (options: Options<WallethistoryData>) => que
     queryKey: wallethistoryQueryKey(options)
 });
 
-export const getaddressQueryKey = (options: Options<GetaddressData>) => createQueryKey("getaddress", options);
+export const getaddressQueryKey = (options: Options<GetaddressData>) => createQueryKey('getaddress', options);
 
 /**
  * Get New Address
@@ -284,7 +282,7 @@ export const getaddressOptions = (options: Options<GetaddressData>) => queryOpti
     queryKey: getaddressQueryKey(options)
 });
 
-export const gettimelockaddressQueryKey = (options: Options<GettimelockaddressData>) => createQueryKey("gettimelockaddress", options);
+export const gettimelockaddressQueryKey = (options: Options<GettimelockaddressData>) => createQueryKey('gettimelockaddress', options);
 
 /**
  * Get Timelock Address
@@ -306,7 +304,7 @@ export const gettimelockaddressOptions = (options: Options<GettimelockaddressDat
     queryKey: gettimelockaddressQueryKey(options)
 });
 
-export const getseedQueryKey = (options: Options<GetseedData>) => createQueryKey("getseed", options);
+export const getseedQueryKey = (options: Options<GetseedData>) => createQueryKey('getseed', options);
 
 /**
  * Get Seed
@@ -383,7 +381,7 @@ export const configsettingMutation = (options?: Partial<Options<ConfigsettingDat
     return mutationOptions;
 };
 
-export const rescanblockchainQueryKey = (options: Options<RescanblockchainData>) => createQueryKey("rescanblockchain", options);
+export const rescanblockchainQueryKey = (options: Options<RescanblockchainData>) => createQueryKey('rescanblockchain', options);
 
 /**
  * Rescan Blockchain
@@ -403,7 +401,7 @@ export const rescanblockchainOptions = (options: Options<RescanblockchainData>) 
     queryKey: rescanblockchainQueryKey(options)
 });
 
-export const getrescaninfoQueryKey = (options: Options<GetrescaninfoData>) => createQueryKey("getrescaninfo", options);
+export const getrescaninfoQueryKey = (options: Options<GetrescaninfoData>) => createQueryKey('getrescaninfo', options);
 
 /**
  * Get Rescan Info
@@ -442,7 +440,7 @@ export const signmessageMutation = (options?: Partial<Options<SignmessageData>>)
     return mutationOptions;
 };
 
-export const yieldgenreportQueryKey = (options?: Options<YieldgenreportData>) => createQueryKey("yieldgenreport", options);
+export const yieldgenreportQueryKey = (options?: Options<YieldgenreportData>) => createQueryKey('yieldgenreport', options);
 
 /**
  * Yieldgen Report
@@ -506,7 +504,7 @@ export const docoinjoinMutation = (options?: Partial<Options<DocoinjoinData>>): 
     return mutationOptions;
 };
 
-export const stopcoinjoinQueryKey = (options: Options<StopcoinjoinData>) => createQueryKey("stopcoinjoin", options);
+export const stopcoinjoinQueryKey = (options: Options<StopcoinjoinData>) => createQueryKey('stopcoinjoin', options);
 
 /**
  * Stop Coinjoin
@@ -545,7 +543,7 @@ export const startmakerMutation = (options?: Partial<Options<StartmakerData>>): 
     return mutationOptions;
 };
 
-export const stopmakerQueryKey = (options: Options<StopmakerData>) => createQueryKey("stopmaker", options);
+export const stopmakerQueryKey = (options: Options<StopmakerData>) => createQueryKey('stopmaker', options);
 
 /**
  * Stop Maker
@@ -609,7 +607,7 @@ export const tumblerplanMutation = (options?: Partial<Options<TumblerplanData>>)
     return mutationOptions;
 };
 
-export const tumblerstatusQueryKey = (options: Options<TumblerstatusData>) => createQueryKey("tumblerstatus", options);
+export const tumblerstatusQueryKey = (options: Options<TumblerstatusData>) => createQueryKey('tumblerstatus', options);
 
 /**
  * Get Status
@@ -671,7 +669,7 @@ export const tumblerstopMutation = (options?: Partial<Options<TumblerstopData>>)
     return mutationOptions;
 };
 
-export const getOrderbookApiV1ObwatchOrderbookJsonGetQueryKey = (options?: Options<GetOrderbookApiV1ObwatchOrderbookJsonGetData>) => createQueryKey("getOrderbookApiV1ObwatchOrderbookJsonGet", options);
+export const getOrderbookApiV1ObwatchOrderbookJsonGetQueryKey = (options?: Options<GetOrderbookApiV1ObwatchOrderbookJsonGetData>) => createQueryKey('getOrderbookApiV1ObwatchOrderbookJsonGet', options);
 
 /**
  * Get Orderbook
@@ -691,7 +689,7 @@ export const getOrderbookApiV1ObwatchOrderbookJsonGetOptions = (options?: Option
     queryKey: getOrderbookApiV1ObwatchOrderbookJsonGetQueryKey(options)
 });
 
-export const refreshOrderbookGetApiV1ObwatchRefreshorderbookGetQueryKey = (options?: Options<RefreshOrderbookGetApiV1ObwatchRefreshorderbookGetData>) => createQueryKey("refreshOrderbookGetApiV1ObwatchRefreshorderbookGet", options);
+export const refreshOrderbookGetApiV1ObwatchRefreshorderbookGetQueryKey = (options?: Options<RefreshOrderbookGetApiV1ObwatchRefreshorderbookGetData>) => createQueryKey('refreshOrderbookGetApiV1ObwatchRefreshorderbookGet', options);
 
 /**
  * Refresh Orderbook Get
@@ -730,7 +728,7 @@ export const refreshOrderbookPostApiV1ObwatchRefreshorderbookPostMutation = (opt
     return mutationOptions;
 };
 
-export const getlogsQueryKey = (options?: Options<GetlogsData>) => createQueryKey("getlogs", options);
+export const getlogsQueryKey = (options?: Options<GetlogsData>) => createQueryKey('getlogs', options);
 
 /**
  * Get Logs
@@ -750,7 +748,7 @@ export const getlogsOptions = (options?: Options<GetlogsData>) => queryOptions<G
     queryKey: getlogsQueryKey(options)
 });
 
-export const getOrderbookObwatchOrderbookJsonGetQueryKey = (options?: Options<GetOrderbookObwatchOrderbookJsonGetData>) => createQueryKey("getOrderbookObwatchOrderbookJsonGet", options);
+export const getOrderbookObwatchOrderbookJsonGetQueryKey = (options?: Options<GetOrderbookObwatchOrderbookJsonGetData>) => createQueryKey('getOrderbookObwatchOrderbookJsonGet', options);
 
 /**
  * Get Orderbook
@@ -770,7 +768,7 @@ export const getOrderbookObwatchOrderbookJsonGetOptions = (options?: Options<Get
     queryKey: getOrderbookObwatchOrderbookJsonGetQueryKey(options)
 });
 
-export const refreshOrderbookGetObwatchRefreshorderbookGetQueryKey = (options?: Options<RefreshOrderbookGetObwatchRefreshorderbookGetData>) => createQueryKey("refreshOrderbookGetObwatchRefreshorderbookGet", options);
+export const refreshOrderbookGetObwatchRefreshorderbookGetQueryKey = (options?: Options<RefreshOrderbookGetObwatchRefreshorderbookGetData>) => createQueryKey('refreshOrderbookGetObwatchRefreshorderbookGet', options);
 
 /**
  * Refresh Orderbook Get
