@@ -115,6 +115,15 @@ export type CreateWalletResponse = {
  *
  * ``amount_sats`` is the amount to send in satoshis; ``0`` means sweep the
  * entire mixdepth. ``mixdepth`` is the source account index.
+ *
+ * ``input_utxos`` is an optional explicit list of ``"txid:vout"`` strings
+ * (issue #587). When given, exactly those UTXOs are spent and automatic
+ * coin selection is skipped entirely, including for sweeps
+ * (``amount_sats: 0`` + ``input_utxos`` sweeps only the listed inputs).
+ * Every listed UTXO must already be unfrozen and belong to ``mixdepth``;
+ * anything unusable is rejected with a reason rather than falling back to
+ * automatic selection. Omit the field (the default) to keep the previous
+ * auto-selecting behavior; an explicit empty list is always an error.
  */
 export type DirectSendRequest = {
     /**
@@ -133,6 +142,10 @@ export type DirectSendRequest = {
      * Txfee
      */
     txfee?: number | null;
+    /**
+     * Input Utxos
+     */
+    input_utxos?: Array<string> | null;
 };
 
 /**

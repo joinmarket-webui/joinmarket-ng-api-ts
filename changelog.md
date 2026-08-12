@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Coin control on direct-send:** `input_utxos` on `DirectSendRequest`, an optional list of `txid:vout` strings that pins the exact inputs to spend (joinmarket-ng#587). Omitting it keeps the previous auto-selecting behaviour.
+- **API Sync:** Picked up backend changes made since v1.0.0 — `amount` and `source` on `HistoryEntry` (with `cj_amount` and `source_mixdepth` now nullable and `role` narrowed to a union), `scan_range` on `RecoverWalletRequest`, `error` on `RescanInfoResponse`, and `confirmations` on `TxInfo`.
+
+### Fixed
+- `scripts/fetch-schema.mjs` importing a default export from `js-yaml`, which has not existed since the bump to v5 and made the script fail to run.
+
 ## [v1.0.0] - 2026-06-28
 
 ### Added

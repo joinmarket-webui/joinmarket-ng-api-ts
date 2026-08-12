@@ -1568,6 +1568,20 @@
               }
             ],
             "title": "Txfee"
+          },
+          "input_utxos": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Input Utxos"
           }
         },
         "type": "object",
@@ -1577,7 +1591,7 @@
           "destination"
         ],
         "title": "DirectSendRequest",
-        "description": "POST /api/v1/wallet/{walletname}/taker/direct-send request.\n\n``amount_sats`` is the amount to send in satoshis; ``0`` means sweep the\nentire mixdepth. ``mixdepth`` is the source account index."
+        "description": "POST /api/v1/wallet/{walletname}/taker/direct-send request.\n\n``amount_sats`` is the amount to send in satoshis; ``0`` means sweep the\nentire mixdepth. ``mixdepth`` is the source account index.\n\n``input_utxos`` is an optional explicit list of ``\"txid:vout\"`` strings\n(issue #587). When given, exactly those UTXOs are spent and automatic\ncoin selection is skipped entirely, including for sweeps\n(``amount_sats: 0`` + ``input_utxos`` sweeps only the listed inputs).\nEvery listed UTXO must already be unfrozen and belong to ``mixdepth``;\nanything unusable is rejected with a reason rather than falling back to\nautomatic selection. Omit the field (the default) to keep the previous\nauto-selecting behavior; an explicit empty list is always an error."
       },
       "DirectSendResponse": {
         "properties": {
