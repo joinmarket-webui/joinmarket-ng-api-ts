@@ -166,6 +166,10 @@ export type DirectSendResponse = {
  * the lower bound of 2 matches the minimum the taker protocol can run with,
  * and the upper bound prevents a malformed request from triggering large
  * allocations / long-running RPC under the auth boundary.
+ *
+ * ``input_utxos`` is an optional explicit list of ``"txid:vout"`` strings.
+ * When given, the CoinJoin spends exactly those UTXOs. Omit the field to
+ * preserve automatic coin selection.
  */
 export type DoCoinjoinRequest = {
     /**
@@ -188,6 +192,48 @@ export type DoCoinjoinRequest = {
      * Txfee
      */
     txfee?: number | null;
+    /**
+     * Input Utxos
+     */
+    input_utxos?: Array<string> | null;
+};
+
+/**
+ * FreezeBatchEntry
+ *
+ * One entry of a POST /api/v1/wallet/{walletname}/freeze-batch request.
+ *
+ * Same field name and hyphenated wire alias as :class:`FreezeRequest`, so a
+ * caller migrating from one-at-a-time calls to a batch just wraps the same
+ * entries in a list.
+ */
+export type FreezeBatchEntry = {
+    /**
+     * Utxo-String
+     */
+    'utxo-string': string;
+    /**
+     * Freeze
+     */
+    freeze: boolean;
+};
+
+/**
+ * FreezeBatchRequest
+ *
+ * POST /api/v1/wallet/{walletname}/freeze-batch request (issue #596).
+ *
+ * Applies every entry atomically: either the whole batch lands or, if any
+ * entry is invalid, none of it does. An empty list and a repeated outpoint
+ * are both rejected outright rather than treated as a partial no-op, since
+ * a duplicate has no well-defined outcome (list order alone would decide
+ * it) and an empty list is more likely a client bug than "no preference".
+ */
+export type FreezeBatchRequest = {
+    /**
+     * Entries
+     */
+    entries: Array<FreezeBatchEntry>;
 };
 
 /**
@@ -1553,6 +1599,40 @@ export type FreezeResponses = {
 };
 
 export type FreezeResponse = FreezeResponses[keyof FreezeResponses];
+
+export type FreezebatchData = {
+    body: FreezeBatchRequest;
+    path: {
+        /**
+         * Walletname
+         */
+        walletname: string;
+    };
+    query?: never;
+    url: '/api/v1/wallet/{walletname}/freeze-batch';
+};
+
+export type FreezebatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type FreezebatchError = FreezebatchErrors[keyof FreezebatchErrors];
+
+export type FreezebatchResponses = {
+    /**
+     * Response Freezebatch
+     *
+     * Successful Response
+     */
+    200: {
+        [key: string]: string;
+    };
+};
+
+export type FreezebatchResponse = FreezebatchResponses[keyof FreezebatchResponses];
 
 export type ConfiggetData = {
     body: ConfigGetRequest;
