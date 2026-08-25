@@ -33,6 +33,10 @@ jobs:
 
       - name: Publish to npm Registry
         run: npm run publish:npm
+        # disabled till npm 2FA can be done with TOTP (last checked on 2026-08-25)
+        # Can "publish", but cannot "approve" or "reject" packages staged for publishing
+        # via `npm stage approve|reject <stage-id>`
+        if: false
 
       - name: Publish to Github Registry
         run: |
